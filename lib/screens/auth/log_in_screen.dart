@@ -19,7 +19,7 @@ class LogInScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
           ),
           title: Text(
-            'Sign In',
+            'Log In',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -38,11 +38,14 @@ class LogInScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 40, bottom: 24),
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(3))),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: TextFormField(
                       maxLines: 1,
                       obscureText: false,
                       autovalidate: false,
+                      keyboardType: TextInputType.emailAddress,
                       style: TextStyle(
                         fontWeight: FontWeight.normal,
                         color: Color(0xFF4F4C4F),
@@ -50,7 +53,8 @@ class LogInScreen extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       ),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                         prefixIcon: Icon(
                           Icons.mail_outline,
                           color: Color(
@@ -85,11 +89,12 @@ class LogInScreen extends StatelessWidget {
                 ),
                 Container(
                   //height: 41,
-                  margin: EdgeInsets.symmetric(horizontal: 40),
+                  margin: EdgeInsets.symmetric(horizontal: 30),
                   child: TextFormField(
                     maxLines: 1,
                     obscureText: false,
                     autovalidate: false,
+                    keyboardType: TextInputType.visiblePassword,
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       color: Color(0xFF4F4C4F),
@@ -125,7 +130,8 @@ class LogInScreen extends StatelessWidget {
                                 color: Color(0xFFE5E5E5),
                                 width: 2,
                                 style: BorderStyle.solid)),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                         suffixIcon: Icon(
                           Icons.visibility_off,
                           color: Color(
@@ -134,7 +140,6 @@ class LogInScreen extends StatelessWidget {
                         )),
                   ),
                 ),
-
                 GestureDetector(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LogInScreen())),
@@ -150,7 +155,6 @@ class LogInScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 GestureDetector(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LogInScreen())),
@@ -159,7 +163,7 @@ class LogInScreen extends StatelessWidget {
                         color: Color(0xff4A154B),
                         borderRadius: BorderRadius.all(Radius.circular(3))),
                     padding: EdgeInsets.symmetric(vertical: 14),
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Center(
                       child: Text(
                         'Log In',
@@ -173,7 +177,7 @@ class LogInScreen extends StatelessWidget {
                 ),
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 22, bottom: 22),
+                    padding: const EdgeInsets.only(top: 37, bottom: 22),
                     child: Column(
                       children: <Widget>[
                         Text(
@@ -197,7 +201,7 @@ class LogInScreen extends StatelessWidget {
                         border: Border.all(color: Color(0xFFBABABA), width: 1),
                         borderRadius: BorderRadius.all(Radius.circular(3))),
                     padding: EdgeInsets.symmetric(vertical: 14),
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Center(
                       child: Row(
                         children: <Widget>[
@@ -225,15 +229,17 @@ class LogInScreen extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           color: Color(0xffFFFFFF),
-                          border: Border.all(color: Color(0xFFBABABA), width: 1),
+                          border:
+                              Border.all(color: Color(0xFFBABABA), width: 1),
                           borderRadius: BorderRadius.all(Radius.circular(3))),
                       padding: EdgeInsets.symmetric(vertical: 14),
-                      margin: EdgeInsets.symmetric(horizontal: 40),
+                      margin: EdgeInsets.symmetric(horizontal: 30),
                       child: Center(
                         child: Row(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 40),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 40),
                               child: Image.asset('assets/images/f.png'),
                             ),
                             Text(
@@ -261,16 +267,17 @@ class LogInScreen extends StatelessWidget {
                           'Don\'t have an account? ',
                           style: TextStyle(
                             color: Color(0xffD3CA00),
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         GestureDetector(
-                          onTap: ()=>NavigationHelper.goTo(context, SignUpScreen()),
+                          onTap: () =>
+                              NavigationHelper.goTo(context, SignUpScreen()),
                           child: Text(
                             ' Sign Up',
                             style: TextStyle(
                               color: Color(0xffD3CA00),
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

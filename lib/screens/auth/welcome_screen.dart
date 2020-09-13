@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:trifold/screens/auth/sign_in_screen.dart';
+import 'package:trifold/screens/auth/log_in_screen.dart';
 import 'package:trifold/screens/auth/sign_up_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,10 +16,19 @@ class WelcomeScreen extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               'assets/images/design.png',
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
+              width: MediaQuery.of(context).size.width,
             ),
-            Image.asset('assets/images/design.png',fit: BoxFit.fill,),
-            Image.asset('assets/images/design.png'),
+            Image.asset(
+              'assets/images/design.png',
+              fit: BoxFit.fitWidth,
+              width: MediaQuery.of(context).size.width,
+            ),
+            Image.asset(
+              'assets/images/design.png',
+              fit: BoxFit.fitWidth,
+              width: MediaQuery.of(context).size.width,
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 80, bottom: 8),
               child: Text(
@@ -82,5 +90,4 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -35,13 +35,16 @@ class SignUpScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 40,),
+                  padding: const EdgeInsets.only(
+                    top: 40,
+                  ),
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: TextFormField(
                       maxLines: 1,
                       obscureText: false,
                       autovalidate: false,
+                      keyboardType: TextInputType.emailAddress,
                       style: TextStyle(
                         fontWeight: FontWeight.normal,
                         color: Color(0xFF4F4C4F),
@@ -49,7 +52,8 @@ class SignUpScreen extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       ),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                         prefixIcon: Icon(
                           Icons.mail_outline,
                           color: Color(
@@ -86,9 +90,10 @@ class SignUpScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 24),
                   child: Container(
                     //height: 41,
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: TextFormField(
                       maxLines: 1,
+                      keyboardType: TextInputType.visiblePassword,
                       obscureText: false,
                       autovalidate: false,
                       style: TextStyle(
@@ -126,7 +131,8 @@ class SignUpScreen extends StatelessWidget {
                                   color: Color(0xFFE5E5E5),
                                   width: 2,
                                   style: BorderStyle.solid)),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 16),
                           suffixIcon: Icon(
                             Icons.visibility_off,
                             color: Color(
@@ -138,11 +144,12 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 Container(
                   //height: 41,
-                  margin: EdgeInsets.symmetric(horizontal: 40),
+                  margin: EdgeInsets.symmetric(horizontal: 30),
                   child: TextFormField(
                     maxLines: 1,
                     obscureText: false,
                     autovalidate: false,
+                    keyboardType: TextInputType.visiblePassword,
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       color: Color(0xFF4F4C4F),
@@ -178,7 +185,8 @@ class SignUpScreen extends StatelessWidget {
                                 color: Color(0xFFE5E5E5),
                                 width: 2,
                                 style: BorderStyle.solid)),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                         suffixIcon: Icon(
                           Icons.visibility_off,
                           color: Color(
@@ -187,25 +195,23 @@ class SignUpScreen extends StatelessWidget {
                         )),
                   ),
                 ),
-
                 Padding(
-                    padding: const EdgeInsets.only(top: 15, bottom: 15,left: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Radio(value: false, groupValue:1, onChanged: (value){}),
-                        Text(
-                          'I agree to Trifold’s Privacy Policy',
-                          style: TextStyle(
-                            color: Color(0xffD3CA00),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
+                  padding: const EdgeInsets.only(top: 15, bottom: 15, left: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Radio(value: false, groupValue: 1, onChanged: (value) {}),
+                      Text(
+                        'I agree to Trifold\’s Privacy Policy',
+                        style: TextStyle(
+                          color: Color(0xffD3CA00),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-
+                ),
                 GestureDetector(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Container())),
@@ -214,7 +220,7 @@ class SignUpScreen extends StatelessWidget {
                         color: Color(0xff4A154B),
                         borderRadius: BorderRadius.all(Radius.circular(3))),
                     padding: EdgeInsets.symmetric(vertical: 14),
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Center(
                       child: Text(
                         'Continue',
@@ -252,7 +258,7 @@ class SignUpScreen extends StatelessWidget {
                         border: Border.all(color: Color(0xFFBABABA), width: 1),
                         borderRadius: BorderRadius.all(Radius.circular(3))),
                     padding: EdgeInsets.symmetric(vertical: 14),
-                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Center(
                       child: Row(
                         children: <Widget>[
@@ -280,15 +286,17 @@ class SignUpScreen extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           color: Color(0xffFFFFFF),
-                          border: Border.all(color: Color(0xFFBABABA), width: 1),
+                          border:
+                              Border.all(color: Color(0xFFBABABA), width: 1),
                           borderRadius: BorderRadius.all(Radius.circular(3))),
                       padding: EdgeInsets.symmetric(vertical: 14),
-                      margin: EdgeInsets.symmetric(horizontal: 40),
+                      margin: EdgeInsets.symmetric(horizontal: 30),
                       child: Center(
                         child: Row(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 40),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 40),
                               child: Image.asset('assets/images/f.png'),
                             ),
                             Text(
@@ -320,7 +328,8 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: ()=>NavigationHelper.goTo(context, Container()),
+                          onTap: () =>
+                              NavigationHelper.goTo(context, Container()),
                           child: Text(
                             ' Log In',
                             style: TextStyle(
