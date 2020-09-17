@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trifold/MHA4.dart';
-import 'package:trifold/MHA5.dart';
-import 'package:trifold/MHA6.dart';
-import 'package:trifold/screens/auth/sign_up_screen.dart';
-import 'package:trifold/Verification.dart';
 import 'package:trifold/screens/splash_screen.dart';
 
 void main() => runApp(MyApp());

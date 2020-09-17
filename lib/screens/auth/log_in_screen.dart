@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trifold/custom_widgets/hide_keyboard_container.dart';
+import 'package:trifold/custom_widgets/trifold_button.dart';
 import 'package:trifold/screens/auth/sign_up_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 import 'package:trifold/utils/navigation_helper.dart';
@@ -155,26 +156,10 @@ class LogInScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LogInScreen())),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Color(0xff4A154B),
-                        borderRadius: BorderRadius.all(Radius.circular(3))),
-                    padding: EdgeInsets.symmetric(vertical: 14),
-                    margin: EdgeInsets.symmetric(horizontal: 30),
-                    child: Center(
-                      child: Text(
-                        'Log In',
-                        style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                TrifoldButton(title: 'Log In',onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LogInScreen()));
+                },),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 37, bottom: 22),
