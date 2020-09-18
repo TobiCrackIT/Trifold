@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_widgets/trifold_button.dart';
+
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -131,24 +133,10 @@ class Login extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () => Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Login())),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xff4A154B),
-                      borderRadius: BorderRadius.all(Radius.circular(3))),
-                  height: 41,
-                  width: 286,
-                  margin: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Center(
-                    child: Text(
-                      'Log In',
-                      style: TextStyle(color: Color(0xffffffff), fontSize: 14),
-                    ),
-                  ),
-                ),
-              ),
+              TrifoldButton(title: 'Log In',onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Login()));
+              },),
             ],
           ),
         ),
