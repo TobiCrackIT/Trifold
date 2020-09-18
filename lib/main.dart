@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trifold/screens/onboarding/new_onboarding_screen.dart';
 import 'package:trifold/screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
@@ -10,10 +11,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Trifold',
+
       theme: ThemeData(
         primarySwatch: Colors.brown,
+        fontFamily: 'Poppins',
       ),
-      home: SplashScreen(),
+      home: NewOnBoarding(),
     );
   }
 }
