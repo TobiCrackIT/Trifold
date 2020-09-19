@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trifold/custom_widgets/trifold_button_two.dart';
 import 'package:trifold/screens/auth/log_in_screen.dart';
 import 'package:trifold/screens/auth/sign_up_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
@@ -49,42 +50,15 @@ class WelcomeScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 57, bottom: 20),
-              child: GestureDetector(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignUpScreen())),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                      borderRadius: BorderRadius.all(Radius.circular(3))),
-                  padding: EdgeInsets.symmetric(vertical: 12),
-                  margin: const EdgeInsets.symmetric(horizontal: 37),
-                  child: Center(
-                    child: Text(
-                      'Sign Up',
-                      style:
-                          TextStyle(color: TrifoldColors.major, fontSize: 16),
-                    ),
-                  ),
-                ),
-              ),
+              child:TrifoldButton2(title: 'Sign Up',onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignUpScreen()));
+              },),
             ),
-            GestureDetector(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LogInScreen())),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color(0xffffffff),
-                    borderRadius: BorderRadius.all(Radius.circular(3))),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                margin: const EdgeInsets.symmetric(horizontal: 37),
-                child: Center(
-                  child: Text(
-                    'Log In',
-                    style: TextStyle(color: TrifoldColors.major, fontSize: 16),
-                  ),
-                ),
-              ),
-            ),
+            TrifoldButton2(title: 'Log In',onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LogInScreen()));
+            },),
           ],
         ),
       ),
