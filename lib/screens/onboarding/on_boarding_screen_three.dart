@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trifold/custom_widgets/trifold_button.dart';
 import 'package:trifold/utils/navigation_helper.dart';
 import 'package:trifold/screens/auth/welcome_screen.dart';
 
@@ -76,24 +77,10 @@ class OnBoardingScreenThree extends StatelessWidget {
                   ],
                 ),
               ),
-              GestureDetector(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WelcomeScreen())),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xff4A154B),
-                      borderRadius: BorderRadius.all(Radius.circular(3))),
-                  height: 41,
-                  width: 246,
-                  margin: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Center(
-                    child: Text(
-                      'Next',
-                      style: TextStyle(color: Color(0xffffffff), fontSize: 14),
-                    ),
-                  ),
-                ),
-              ),
+              TrifoldButton(title: 'Next',onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WelcomeScreen()));
+              },),
             ],
           ),
         ),
