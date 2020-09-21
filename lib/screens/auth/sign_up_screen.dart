@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:trifold/custom_widgets/hide_keyboard_container.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
@@ -6,9 +7,12 @@ import 'package:trifold/utils/colors/trifold_colors.dart';
 import 'package:trifold/utils/navigation_helper.dart';
 
 class SignUpScreen extends StatelessWidget {
+
   final emailController = new TextEditingController();
   final passwordController = new TextEditingController();
   final confirmPasswordController = new TextEditingController();
+
+  FirebaseAuth firebaseAuth= FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -124,9 +128,8 @@ class SignUpScreen extends StatelessWidget {
                 TrifoldButton(
                   title: 'Continue',
                   onPressed: () {
-                    print(
-                        'Email : ${emailController.text}\nPassword : ${passwordController.text}\nConfirm password : ${confirmPasswordController.text}');
-                    Navigator.push(context,
+                    signUp(emailController.text.trim(),passwordController.text.trim());
+                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Container()));
                   },
                 ),
@@ -264,4 +267,98 @@ class SignUpScreen extends StatelessWidget {
       _success = false;
     }
   }*/
+
+  /*Future signUpWithEmail({
+    @required String email,
+    @required String password,
+  }) async {
+    try {
+      var authResult = await firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      dbRef.set({
+        "email": emailController.text,
+        "age": ageController.text,
+        "name": nameController.text
+      });
+
+      return authResult.user != null;
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(e.message),
+              actions: [
+                FlatButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    }
+  }
+*/
+  /*void registerToFirebase() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    firebaseAuth
+        .createUserWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text)
+        .then((value) {
+      dbRef.child(value.user.uid).set({
+        "email": emailController.text,
+        "age": ageController.text,
+        "name": nameController.text,
+      }).then((result) {
+        setState(() {
+          isLoading = false;
+        });
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomeScreen(
+                firebaseUser: value.user,
+              )),
+        );
+      });
+    }).catchError((error) {
+      setState(() {
+        isLoading = false;
+      });
+
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(error.message),
+              actions: [
+                FlatButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    });
+  }*/
+
+  void signUp(String email, String password){
+    firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+  }
+
 }
