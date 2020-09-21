@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:trifold/screens/onboarding/on_boarding_screen_one.dart';
+import 'package:trifold/screens/onboarding/onboarding_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigateToPage() async {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => OnBoardingScreenOne()));
+        MaterialPageRoute(builder: (_) => OnBoardingScreen()));
     /*sharedPreferences = await SharedPreferences.getInstance();
     bool _seen = (sharedPreferences.getBool(PokerStrings.SEEN) ?? false);
     bool _loggedIn = (sharedPreferences.getBool(PokerStrings.LOGGED_IN) ?? false);

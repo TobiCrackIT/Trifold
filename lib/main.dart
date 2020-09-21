@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trifold/screens/onboarding/new_onboarding_screen.dart';
+import 'package:trifold/screens/onboarding/onboarding_screen.dart';
 import 'package:trifold/screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         fontFamily: 'Poppins',
       ),
-      home: NewOnBoarding(),
+      home: OnBoardingScreen(),
     );
   }
 }

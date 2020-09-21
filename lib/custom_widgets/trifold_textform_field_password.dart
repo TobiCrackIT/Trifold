@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 
-
-class TrifoldTextformFieldPassword extends StatelessWidget {
+class TrifoldTextformFieldPassword extends StatefulWidget {
   final String title;
   final TextEditingController textEditingController;
 
+  TrifoldTextformFieldPassword({this.title, this.textEditingController});
 
-  TrifoldTextformFieldPassword({this.title,this.textEditingController});
+  @override
+  _TrifoldTextformFieldPasswordState createState() =>
+      _TrifoldTextformFieldPasswordState();
+}
+
+class _TrifoldTextformFieldPasswordState
+    extends State<TrifoldTextformFieldPassword> {
+  bool hideText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +23,14 @@ class TrifoldTextformFieldPassword extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 30),
       child: TextFormField(
         maxLines: 1,
-        obscureText: false,
+        obscureText: hideText,
         autovalidate: false,
         keyboardType: TextInputType.visiblePassword,
-        controller: textEditingController,
+        controller: widget.textEditingController,
         style: TextStyle(
           fontWeight: FontWeight.normal,
           color: Color(0xFF4F4C4F),
-          fontSize: 12,
+          fontSize: 18,
           fontStyle: FontStyle.normal,
         ),
         decoration: InputDecoration(
@@ -33,11 +40,11 @@ class TrifoldTextformFieldPassword extends StatelessWidget {
                 0xff6F6C6E,
               ),
             ),
-            labelText: '$title',
+            labelText: '${widget.title}',
             fillColor: Colors.white,
             filled: true,
             labelStyle: TextStyle(
-              fontSize: 12,
+              fontSize: 16,
               fontWeight: FontWeight.normal,
               fontStyle: FontStyle.normal,
               color: Color(0xff4F4C4F),
@@ -55,16 +62,21 @@ class TrifoldTextformFieldPassword extends StatelessWidget {
                     color: Color(0xFFE5E5E5),
                     width: 2,
                     style: BorderStyle.solid)),
-            contentPadding:
-            EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            suffixIcon: Icon(
-              Icons.visibility_off,
-              color: Color(
-                0xff6F6C6E,
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  hideText = !hideText;
+                });
+              },
+              child: Icon(
+                hideText == true ? Icons.visibility : Icons.visibility_off,
+                color: Color(
+                  0xff6F6C6E,
+                ),
               ),
             )),
       ),
     );
-
   }
 }

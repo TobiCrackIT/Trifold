@@ -51,7 +51,7 @@ class LogInScreen extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.normal,
                         color: Color(0xFF4F4C4F),
-                        fontSize: 12,
+                        fontSize: 18,
                         fontStyle: FontStyle.normal,
                       ),
                       decoration: InputDecoration(
@@ -67,7 +67,7 @@ class LogInScreen extends StatelessWidget {
                         fillColor: Colors.white,
                         filled: true,
                         labelStyle: TextStyle(
-                          fontSize: 12,
+                          fontSize: 16,
                           fontWeight: FontWeight.normal,
                           fontStyle: FontStyle.normal,
                           color: Color(0xff4F4C4F),
@@ -89,7 +89,7 @@ class LogInScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                TrifoldTextformFieldPassword(title:'Password'),
+                TrifoldTextformFieldPassword(title: 'Password'),
                 GestureDetector(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LogInScreen())),
@@ -98,18 +98,20 @@ class LogInScreen extends StatelessWidget {
                     child: Text(
                       'Forgot password?',
                       style: TextStyle(
-                        color: Color(0xffD3CA00),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily:'Poppins'
-                      ),
+                          color: Color(0xffD3CA00),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                 ),
-                TrifoldButton(title: 'Log In',onPressed: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LogInScreen()));
-                },),
+                TrifoldButton(
+                  title: 'Log In',
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LogInScreen()));
+                  },
+                ),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 37, bottom: 22),

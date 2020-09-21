@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
 import 'package:trifold/screens/auth/welcome_screen.dart';
-import 'package:trifold/screens/onboarding/on_boarding_screen_two.dart';
 import 'package:trifold/utils/navigation_helper.dart';
 
-class NewOnBoarding extends StatelessWidget {
+class OnBoardingScreen extends StatelessWidget {
   final List<String> OnBoardingText=[
     'Two are better than one; because they have a good reward for their labour',
     'A threefold cord is not quickly broken',
@@ -65,10 +64,10 @@ class NewOnBoarding extends StatelessWidget {
                         ),
                       ),
 
-                      TrifoldButton(title: 'Next',onPressed: (){
+                      /*TrifoldButton(title: 'Next',onPressed: (){
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => OnBoardingScreenTwo()));
-                      },),
+                      },),*/
                     ],
                   ),
                 );
