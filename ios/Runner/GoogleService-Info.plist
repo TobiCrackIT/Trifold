@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>731098071423-a2tqce0b1t3gr3q7iccgefj94p5jpckb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.731098071423-a2tqce0b1t3gr3q7iccgefj94p5jpckb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBn9w1FohGmZaAZl4wvH7xQtM7B3sID_E8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>731098071423</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.trifold</string>
+	<key>PROJECT_ID</key>
+	<string>trifold-97509</string>
+	<key>STORAGE_BUCKET</key>
+	<string>trifold-97509.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:731098071423:ios:8ef6e0221ed67392351a4a</string>
+	<key>DATABASE_URL</key>
+	<string>https://trifold-97509.firebaseio.com</string>
+</dict>
+</plist>

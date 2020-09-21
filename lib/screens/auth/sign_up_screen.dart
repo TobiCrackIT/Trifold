@@ -232,4 +232,20 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
+
+  /*void _register() async {
+    final User user = (await _auth.createUserWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    ))
+        .user;
+    if (user != null) {
+      setState(() {
+        _success = true;
+        _userEmail = user.email;
+      });
+    } else {
+      _success = false;
+    }
+  }*/
 }

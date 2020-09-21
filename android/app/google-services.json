@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "731098071423",
+    "firebase_url": "https://trifold-97509.firebaseio.com",
+    "project_id": "trifold-97509",
+    "storage_bucket": "trifold-97509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731098071423:android:37cb5a581adbfd04351a4a",
+        "android_client_info": {
+          "package_name": "com.example.Trifold"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731098071423-ru5obhtrh4g6qtlpr403sa66q685i9gk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9qnU9Tf_eb4lD_YhNwKKeVRA4s5znZZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731098071423-ru5obhtrh4g6qtlpr403sa66q685i9gk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
