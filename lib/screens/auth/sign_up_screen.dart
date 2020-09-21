@@ -6,6 +6,10 @@ import 'package:trifold/utils/colors/trifold_colors.dart';
 import 'package:trifold/utils/navigation_helper.dart';
 
 class SignUpScreen extends StatelessWidget {
+  final emailController = new TextEditingController();
+  final passwordController = new TextEditingController();
+  final confirmPasswordController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,6 +50,7 @@ class SignUpScreen extends StatelessWidget {
                       maxLines: 1,
                       obscureText: false,
                       autovalidate: false,
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       style: TextStyle(
                         fontWeight: FontWeight.normal,
@@ -90,9 +95,15 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: TrifoldTextformFieldPassword(title:'Password'),
+                  child: TrifoldTextformFieldPassword(
+                    title: 'Password',
+                    textEditingController: passwordController,
+                  ),
                 ),
-                TrifoldTextformFieldPassword(title:'Confirm Password'),
+                TrifoldTextformFieldPassword(
+                  title: 'Confirm Password',
+                  textEditingController: confirmPasswordController,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15, bottom: 15, left: 30),
                   child: Row(
@@ -110,10 +121,15 @@ class SignUpScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                TrifoldButton(title: 'Continue',onPressed: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Container()));
-                },),
+                TrifoldButton(
+                  title: 'Continue',
+                  onPressed: () {
+                    print(
+                        'Email : ${emailController.text}\nPassword : ${passwordController.text}\nConfirm password : ${confirmPasswordController.text}');
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Container()));
+                  },
+                ),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 22, bottom: 22),

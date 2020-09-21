@@ -4,8 +4,10 @@ import 'package:trifold/utils/colors/trifold_colors.dart';
 
 class TrifoldTextformFieldPassword extends StatelessWidget {
   final String title;
+  final TextEditingController textEditingController;
 
-  TrifoldTextformFieldPassword({this.title, });
+
+  TrifoldTextformFieldPassword({this.title,this.textEditingController});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class TrifoldTextformFieldPassword extends StatelessWidget {
         obscureText: false,
         autovalidate: false,
         keyboardType: TextInputType.visiblePassword,
+        controller: textEditingController,
         style: TextStyle(
           fontWeight: FontWeight.normal,
           color: Color(0xFF4F4C4F),
