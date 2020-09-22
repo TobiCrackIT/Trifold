@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
 import 'package:trifold/custom_widgets/trifold_textform_field_password.dart';
-import 'package:trifold/screens/auth/reset_password_screen_three.dart';
+import 'package:trifold/screens/auth/sign_up_success_screen.dart';
 
 class ResetPassword2 extends StatelessWidget {
   @override
@@ -28,7 +28,7 @@ class ResetPassword2 extends StatelessWidget {
                       ),
                       TrifoldButton(title: 'Continue',onPressed: (){
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ResetPassword3()));
+                            MaterialPageRoute(builder: (context) => SignUpSuccessScreen()));
                       },),
                     ],
                   ),
