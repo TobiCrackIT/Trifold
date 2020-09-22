@@ -3,6 +3,7 @@ import 'package:trifold/custom_widgets/trifold_button_two.dart';
 import 'package:trifold/screens/auth/log_in_screen.dart';
 import 'package:trifold/screens/auth/sign_up_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
+import 'package:trifold/utils/navigation_helper.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -56,8 +57,9 @@ class WelcomeScreen extends StatelessWidget {
               },),
             ),
             TrifoldButton2(title: 'Log In',onPressed: (){
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LogInScreen()));
+
+              NavigationHelper.goTo(context, LogInScreen());
+
             },),
           ],
         ),

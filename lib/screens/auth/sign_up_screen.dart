@@ -14,6 +14,16 @@ class SignUpScreen extends StatelessWidget {
 
   FirebaseAuth firebaseAuth= FirebaseAuth.instance;
 
+  //TODO : 1. Validate e-mail address
+  //TODO : 2. Check if input is empty
+  //TODO : 3. Check that passwords are similar
+  //TODO : 5. Make some processes abstract
+  //TODO : 6. Save registrations in Database
+  //TODO : 7. Smart sign up/ log in process
+  //TODO : 8. Extend custom widget functionalities
+  //TODO : 9. Use services
+  //TODO : 10. Refactor codebase
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +69,7 @@ class SignUpScreen extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.normal,
                         color: Color(0xFF4F4C4F),
-                        fontSize: 12,
+                        fontSize: 18,
                         fontStyle: FontStyle.normal,
                       ),
                       decoration: InputDecoration(
@@ -75,7 +85,7 @@ class SignUpScreen extends StatelessWidget {
                         fillColor: Colors.white,
                         filled: true,
                         labelStyle: TextStyle(
-                          fontSize: 12,
+                          fontSize: 18,
                           fontWeight: FontWeight.normal,
                           fontStyle: FontStyle.normal,
                           color: Color(0xff4F4C4F),
@@ -128,9 +138,12 @@ class SignUpScreen extends StatelessWidget {
                 TrifoldButton(
                   title: 'Continue',
                   onPressed: () {
-                    signUp(emailController.text.trim(),passwordController.text.trim());
-                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Container()));
+                    if(emailController.text.isEmpty || passwordController.text.isEmpty){
+                      print('All fields are required..');
+                    }else{
+                      signUp(emailController.text.trim(),passwordController.text.trim());
+                    }
+                     //Navigator.push(context, MaterialPageRoute(builder: (context) => Container()));
                   },
                 ),
                 Center(

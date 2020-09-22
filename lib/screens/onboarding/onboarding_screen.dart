@@ -35,11 +35,11 @@ class OnBoardingScreen extends StatelessWidget {
                               NavigationHelper.goAndClear(context, WelcomeScreen());
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal:20.0,vertical:20.0),
+                              padding: const EdgeInsets.symmetric(horizontal:20.0,vertical:40.0),
                               child: Text(
                                 'Skip',
                                 textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 15, color: Color(0xffD3CA00)),
+                                style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold, color: Color(0xffD3CA00)),
                               ),
                             ),
                           ),
