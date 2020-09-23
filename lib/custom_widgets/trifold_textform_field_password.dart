@@ -4,8 +4,10 @@ import 'package:trifold/utils/colors/trifold_colors.dart';
 class TrifoldTextformFieldPassword extends StatefulWidget {
   final String title;
   final TextEditingController textEditingController;
+  final ValueChanged<String> onChanged;
 
-  TrifoldTextformFieldPassword({this.title, this.textEditingController});
+
+  TrifoldTextformFieldPassword({this.title, this.textEditingController,this.onChanged});
 
   @override
   _TrifoldTextformFieldPasswordState createState() =>
@@ -20,13 +22,14 @@ class _TrifoldTextformFieldPasswordState
   Widget build(BuildContext context) {
     return Container(
       //height: 41,
-      margin: EdgeInsets.symmetric(horizontal: 30),
+      margin: EdgeInsets.only(left: 30,right: 30,top: 24),
       child: TextFormField(
         maxLines: 1,
         obscureText: hideText,
         autovalidate: false,
         keyboardType: TextInputType.visiblePassword,
         controller: widget.textEditingController,
+        onChanged: widget.onChanged,
         style: TextStyle(
           fontWeight: FontWeight.normal,
           color: Color(0xFF4F4C4F),

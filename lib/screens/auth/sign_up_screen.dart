@@ -1,8 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:trifold/custom_widgets/hide_keyboard_container.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
+import 'package:trifold/custom_widgets/trifold_picture_button.dart';
 import 'package:trifold/custom_widgets/trifold_textform_field_password.dart';
+import 'package:trifold/screens/auth/log_in_screen.dart';
 import 'package:trifold/screens/auth/sign_up_success_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 import 'package:trifold/utils/navigation_helper.dart';
@@ -15,26 +16,20 @@ class SignUpScreen extends StatelessWidget {
   final passwordController = new TextEditingController();
   final confirmPasswordController = new TextEditingController();
 
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
-  AuthViewModel _authViewModel;
-
-  //TODO : 1. Validate e-mail address
-  //TODO : 2. Check if input is empty
-  //TODO : 3. Check that passwords are similar
   //TODO : 5. Make some processes abstract
-  //TODO : 6. Save registrations in Database
-  //TODO : 7. Smart sign up/ log in process
+  //TODO : 7. Smart sign up/log-in process
   //TODO : 8. Extend custom widget functionalities
   //TODO : 9. Use services
   //TODO : 10. Refactor codebase
 
   @override
   Widget build(BuildContext context) {
-    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+
+    final _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
 
     return Consumer<AuthViewModel>(
       builder: (__, model, child) {
+
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (model.getSignUpStatus() == Status.SUCCESS) {
             model.clearStatus();
@@ -70,16 +65,16 @@ class SignUpScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 40,
-                      ),
-                      child: Container(
+                    SizedBox(height: 25,),
+                    Container(
                         margin: EdgeInsets.symmetric(horizontal: 30),
                         child: TextFormField(
                           maxLines: 1,
                           obscureText: false,
                           autovalidate: false,
+                          onChanged: (value) {
+                            model.setEmail(value);
+                          },
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(
@@ -123,32 +118,42 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+
+
+                    TrifoldTextformFieldPassword(
+                      title: 'Password',
+                      textEditingController: passwordController,
+                      onChanged: (value) {
+                        model.setPassword(value);
+                      },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
-                      child: TrifoldTextformFieldPassword(
-                        title: 'Password',
-                        textEditingController: passwordController,
-                      ),
-                    ),
+
                     TrifoldTextformFieldPassword(
                       title: 'Confirm Password',
                       textEditingController: confirmPasswordController,
+                      onChanged: (value) {
+                        model.setConfirmPassword(value);
+                      },
                     ),
+
                     Visibility(
-                      visible: model.getErrorMessage()!='',
+                      visible: model.getErrorMessage() != '',
                       child: Padding(
-                        padding: EdgeInsets.only(top: 5,left: 30),
+                        padding: EdgeInsets.only(top: 5, left: 30,bottom: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Flexible(child: Text('${model.getErrorMessage()}',style: TextStyle(color:Colors.red),)),
+                            Flexible(
+                                child: Text(
+                              '${model.getErrorMessage()}',
+                              style: TextStyle(color: Colors.red),
+                            )),
                           ],
                         ),
                       ),
                     ),
-                    Padding(
+                    /*Padding(
                       padding:
                           const EdgeInsets.only(top: 15, bottom: 15, left: 30),
                       child: Row(
@@ -168,97 +173,41 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
+                    ),*/
+
+                    SizedBox(height: 20,),
                     TrifoldButton(
                       title: 'Continue',
                       status: model.getSignUpStatus(),
                       onPressed: () {
-                        model.signUp(emailController.text.trim(),
-                            passwordController.text.trim(),confirmPasswordController.text.trim());
+                        model.signUp();
                       },
                     ),
+
                     Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 22, bottom: 22),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              'Or',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff000000),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Container())),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xffFFFFFF),
-                            border:
-                                Border.all(color: Color(0xFFBABABA), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(3))),
-                        padding: EdgeInsets.symmetric(vertical: 14),
-                        margin: EdgeInsets.symmetric(horizontal: 30),
-                        child: Center(
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 40),
-                                child: Image.asset('assets/images/g.png'),
-                              ),
-                              Text(
-                                'Sign up with Google',
-                                style: TextStyle(
-                                  color: Color(0xff090209),
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          'Or',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff000000),
                           ),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(context,
+                    TrifoldPictureButton(
+                      title: 'Sign up with Google',
+                      imagePath: 'assets/images/g.png',
+                      onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Container())),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 13, bottom: 24),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xffFFFFFF),
-                              border: Border.all(
-                                  color: Color(0xFFBABABA), width: 1),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(3))),
-                          padding: EdgeInsets.symmetric(vertical: 14),
-                          margin: EdgeInsets.symmetric(horizontal: 30),
-                          child: Center(
-                            child: Row(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40),
-                                  child: Image.asset('assets/images/f.png'),
-                                ),
-                                Text(
-                                  'Sign up with Facebook',
-                                  style: TextStyle(
-                                    color: Color(0xff090209),
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    ),
+                    TrifoldPictureButton(
+                      title: 'Sign up with Facebook',
+                      imagePath: 'assets/images/f.png',
+                      onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Container())),
                     ),
                     GestureDetector(
                       onTap: () => Navigator.push(context,
@@ -277,7 +226,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () =>
-                                  NavigationHelper.goTo(context, Container()),
+                                  NavigationHelper.goTo(context, LogInScreen()),
                               child: Text(
                                 ' Log In',
                                 style: TextStyle(
@@ -356,6 +305,7 @@ class SignUpScreen extends StatelessWidget {
     }
   }
 */
+
   /*void registerToFirebase() async {
     setState(() {
       isLoading = true;
@@ -406,8 +356,4 @@ class SignUpScreen extends StatelessWidget {
     });
   }*/
 
-  void signUp(String email, String password) {
-    firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
-  }
 }
