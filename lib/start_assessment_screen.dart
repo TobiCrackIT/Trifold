@@ -1,13 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trifold/MHA2.dart';
+import 'package:trifold/utils/colors/trifold_colors.dart';
 
 class Assessment1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MyCustomAppBar(
-          height: 150,
+        appBar: AppBar(
+          backgroundColor: TrifoldColors.major,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Color(0xffffffff),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Text(
+            'Marriage Health Assessment',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Color(0xffffffff),
+            ),
+          ),
+          centerTitle: true,
         ),
         body: Center(
           child: Column(
@@ -29,7 +48,7 @@ class Assessment1 extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Assessment1())),
+                    MaterialPageRoute(builder: (context) => Assessment2())),
                 child: Container(
                   decoration: BoxDecoration(
                       color: Color(0xff4A154B),

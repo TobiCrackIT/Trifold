@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
-import 'package:trifold/custom_widgets/trifold_textform_field_password.dart';
+import 'package:trifold/custom_widgets/trifold_password_field.dart';
 import 'package:trifold/screens/auth/sign_up_success_screen.dart';
 
 class ResetPassword2 extends StatelessWidget {
@@ -21,10 +21,10 @@ class ResetPassword2 extends StatelessWidget {
                   padding: const EdgeInsets.only(top:70,bottom:260),
                   child: Column(
                     children: <Widget>[
-                      TrifoldTextformFieldPassword(title:'enter new password'),
+                      TrifoldPasswordField(title:'enter new password'),
                       Padding(
                         padding: const EdgeInsets.only(top:15,bottom:51),
-                        child: TrifoldTextformFieldPassword(title:'confirm new password'),
+                        child: TrifoldPasswordField(title:'confirm new password'),
                       ),
                       TrifoldButton(title: 'Continue',onPressed: (){
                         Navigator.push(context,

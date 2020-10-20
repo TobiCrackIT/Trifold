@@ -16,6 +16,8 @@ class AuthViewModel extends ChangeNotifier {
   Status _signUpStatus;
   Status _logInStatus;
   Status _checkPasswordStatus;
+  bool  _tAndC=true;
+  bool get tAndC=>_tAndC;
 
   String _errorMessage = '';
 
@@ -51,12 +53,11 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
   void signUp() {
     _signUpStatus = Status.LOADING;
     notifyListeners();
 
+    debugPrint('Starting');
     if (_email.isEmpty || _password.isEmpty) {
       _errorMessage = 'All fields are required';
       _signUpStatus = Status.FAILED;
@@ -131,6 +132,12 @@ class AuthViewModel extends ChangeNotifier {
 
   }
 
+  void resetPassword() async {
+    debugPrint('Resetting');
+    await firebaseAuth.sendPasswordResetEmail(email: _email);
+    debugPrint('Done resetting');
+  }
+
   void signInWithGoogle()async{
 
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -171,6 +178,12 @@ class AuthViewModel extends ChangeNotifier {
   void setEmail(String email) {
     _errorMessage = '';
     _email = email;
+    notifyListeners();
+  }
+
+  void acceptTAndC(bool value){
+    _tAndC=value;
+    value==true?debugPrint('True'):debugPrint('False');
     notifyListeners();
   }
 

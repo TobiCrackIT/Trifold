@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:trifold/utils/colors/trifold_colors.dart';
 class Assessment3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MyCustomAppBar(
-          height: 150,
+        appBar: AppBar(
+          backgroundColor: TrifoldColors.major,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Color(0xffffffff),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Text(
+            'Marriage Health Assessment',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Color(0xffffffff),
+            ),
+          ),
+          centerTitle: true,
         ),
         body:Center(
           child: Column(

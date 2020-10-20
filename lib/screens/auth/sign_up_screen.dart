@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trifold/custom_widgets/hide_keyboard_container.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
+import 'package:trifold/custom_widgets/trifold_link_text.dart';
 import 'package:trifold/custom_widgets/trifold_picture_button.dart';
-import 'package:trifold/custom_widgets/trifold_textform_field_password.dart';
+import 'package:trifold/custom_widgets/trifold_password_field.dart';
 import 'package:trifold/screens/auth/log_in_screen.dart';
 import 'package:trifold/screens/auth/sign_up_success_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
@@ -18,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
 
   //TODO : 5. Make some processes abstract
   //TODO : 7. Smart sign up/log-in process
-  //TODO : 8. Extend custom widget functionalities
+  //TODO : 8. Extend custom widget functionalities *
   //TODO : 9. Use services
   //TODO : 10. Refactor codebase
 
@@ -59,15 +60,11 @@ class SignUpScreen extends StatelessWidget {
               ),
               centerTitle: true,
             ),
-            body: SingleChildScrollView(
-              child: HideKeyboardContainer(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+            body:  HideKeyboardContainer(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(vertical: 45,horizontal: 30),
                   children: <Widget>[
-                    SizedBox(height: 25,),
                     Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30),
                         child: TextFormField(
                           maxLines: 1,
                           obscureText: false,
@@ -118,17 +115,16 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
-
-                    TrifoldTextformFieldPassword(
+                    SizedBox(height: 20,),
+                    TrifoldPasswordField(
                       title: 'Password',
                       textEditingController: passwordController,
                       onChanged: (value) {
                         model.setPassword(value);
                       },
                     ),
-
-                    TrifoldTextformFieldPassword(
+                    SizedBox(height: 20,),
+                    TrifoldPasswordField(
                       title: 'Confirm Password',
                       textEditingController: confirmPasswordController,
                       onChanged: (value) {
@@ -153,16 +149,18 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    /*Padding(
+                    Padding(
                       padding:
-                          const EdgeInsets.only(top: 15, bottom: 15, left: 30),
+                          const EdgeInsets.only(top: 5, bottom: 5, left: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Radio(
-                              value: false,
+                              value: model.tAndC,
                               groupValue: 1,
-                              onChanged: (value) {}),
+                              onChanged: (value) {
+                                model.acceptTAndC(value);
+                              }),
                           Text(
                             'I agree to Trifold\’s Privacy Policy',
                             style: TextStyle(
@@ -173,7 +171,16 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),*/
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text("Register as a couple and get 15% discount. If you subscribe before the end of your free trial, "
+                          "your  payment will be forfeited. By clicking, you agree to the terms and privacy policy,Register as a you "
+                          "agree to the terms and privacy policy,Register as a couple",
+                        style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Color(0xff4A154B)),
+                      ),
+                    ),
 
                     SizedBox(height: 20,),
                     TrifoldButton(
@@ -203,16 +210,14 @@ class SignUpScreen extends StatelessWidget {
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Container())),
                     ),
+                    SizedBox(height: 20,),
                     TrifoldPictureButton(
                       title: 'Sign up with Facebook',
                       imagePath: 'assets/images/f.png',
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Container())),
                     ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Container())),
-                      child: Padding(
+                    Padding(
                         padding: const EdgeInsets.only(bottom: 75),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -221,29 +226,19 @@ class SignUpScreen extends StatelessWidget {
                               'Have an account? ',
                               style: TextStyle(
                                 color: Color(0xffD3CA00),
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () =>
-                                  NavigationHelper.goTo(context, LogInScreen()),
-                              child: Text(
-                                ' Log In',
-                                style: TextStyle(
-                                  color: Color(0xffD3CA00),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                            TrifoldLinkText(title:'Log In',onTapped:()=>Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LogInScreen())) ,),
                           ],
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
-            ),
           ),
         );
       },

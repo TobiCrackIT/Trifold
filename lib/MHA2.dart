@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:trifold/MHA3.dart';
+import 'package:trifold/utils/colors/trifold_colors.dart';
+import 'package:trifold/utils/navigation_helper.dart';
 
 class Assessment2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MyCustomAppBar(
-          height: 150,
+        appBar: AppBar(
+          backgroundColor: TrifoldColors.major,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Color(0xffffffff),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Text(
+            'Marriage Health Assessment',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Color(0xffffffff),
+            ),
+          ),
+          centerTitle: true,
         ),
         body: Center(
           child: Column(
@@ -46,75 +66,80 @@ class Assessment2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Color(0xffF6D6F7),
-                    borderRadius: BorderRadius.all(Radius.circular(3))),
-                height: 190,
-                width: 267,
-                margin: const EdgeInsets.symmetric(horizontal: 0),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 57),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 28),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.radio_button_checked,
-                              color: Color(0xff4A154B),
-                            ),
-                            Text(
-                              'Yes',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Color(0xff4A154B),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 41,
-                          bottom: 41,
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.radio_button_checked,
-                              color: Color(0xff4A154B),
-                            ),
-                            Text(
-                              'No',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Color(0xff4A154B),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.radio_button_checked,
-                            color: Color(0xff4A154B),
-                          ),
-                          Text(
-                            'Sometimes',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
+              GestureDetector(
+                onTap: (){
+                  NavigationHelper.goTo(context, Assessment3());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xffF6D6F7),
+                      borderRadius: BorderRadius.all(Radius.circular(3))),
+                  height: 190,
+                  width: 267,
+                  margin: const EdgeInsets.symmetric(horizontal: 0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 57),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 28),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.radio_button_checked,
                                 color: Color(0xff4A154B),
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'Yes',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(0xff4A154B),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 41,
+                            bottom: 41,
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.radio_button_checked,
+                                color: Color(0xff4A154B),
+                              ),
+                              Text(
+                                'No',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(0xff4A154B),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.radio_button_checked,
+                              color: Color(0xff4A154B),
+                            ),
+                            Text(
+                              'Sometimes',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color(0xff4A154B),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

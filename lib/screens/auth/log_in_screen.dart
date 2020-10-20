@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trifold/custom_widgets/hide_keyboard_container.dart';
 import 'package:trifold/custom_widgets/trifold_button.dart';
-import 'package:trifold/custom_widgets/trifold_textform_field_password.dart';
+import 'package:trifold/custom_widgets/trifold_link_text.dart';
+import 'package:trifold/custom_widgets/trifold_password_field.dart';
+import 'package:trifold/custom_widgets/trifold_picture_button.dart';
+import 'package:trifold/screens/auth/reset_passord_screen.dart';
 import 'package:trifold/screens/auth/sign_up_screen.dart';
+import 'package:trifold/screens/dashboard/app_menu.dart';
 import 'package:trifold/start_assessment_screen.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 import 'package:trifold/utils/navigation_helper.dart';
@@ -46,17 +50,15 @@ class LogInScreen extends StatelessWidget {
               ),
               centerTitle: true,
             ),
-            body: SingleChildScrollView(
-              child: HideKeyboardContainer(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+            body:  HideKeyboardContainer(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(vertical: 45,horizontal: 30),
                   children: <Widget>[
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(3))),
                       margin:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                          EdgeInsets.only(bottom: 20),
                       child: TextFormField(
                         maxLines: 1,
                         obscureText: false,
@@ -73,7 +75,7 @@ class LogInScreen extends StatelessWidget {
                         ),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 16),
+                              horizontal: 22, vertical: 16),
                           prefixIcon: Icon(
                             Icons.mail_outline,
                             color: Color(
@@ -105,38 +107,32 @@ class LogInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    TrifoldTextformFieldPassword(
+                    TrifoldPasswordField(
                       title: 'Password',
                       onChanged: (v) => model.setPassword(v),
                     ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LogInScreen())),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 17, bottom: 19),
-                        child: Text(
-                          'Forgot password?',
-                          style: TextStyle(
-                              color: Color(0xffD3CA00),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Poppins'),
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TrifoldLinkText(title:'Forgot password?',onTapped:()=>Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResetPasswordScreen())) ,),
+                      ],
                     ),
+
                     TrifoldButton(
                       title: 'Log In',
                       onPressed: () {
-                        model.login();
+                        NavigationHelper.goTo(context, AppHome());
+                        //model.login();
                       },
                       status: model.getLogInStatus(),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 37, bottom: 22),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
                             'Or',
@@ -149,74 +145,9 @@ class LogInScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    GestureDetector(
-                      onTap: ()=>model.signInWithGoogle(),
-                      //onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen())),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xffFFFFFF),
-                            border:
-                                Border.all(color: Color(0xFFBABABA), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(3))),
-                        padding: EdgeInsets.symmetric(vertical: 14),
-                        margin: EdgeInsets.symmetric(horizontal: 30),
-                        child: Center(
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 40),
-                                child: Image.asset('assets/images/g.png'),
-                              ),
-                              Text(
-                                'Sign up with Google',
-                                style: TextStyle(
-                                  color: Color(0xff090209),
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LogInScreen())),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 13, bottom: 24),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xffFFFFFF),
-                              border: Border.all(
-                                  color: Color(0xFFBABABA), width: 1),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(3))),
-                          padding: EdgeInsets.symmetric(vertical: 14),
-                          margin: EdgeInsets.symmetric(horizontal: 30),
-                          child: Center(
-                            child: Row(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40),
-                                  child: Image.asset('assets/images/f.png'),
-                                ),
-                                Text(
-                                  'Sign up with Facebook',
-                                  style: TextStyle(
-                                    color: Color(0xff090209),
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    TrifoldPictureButton(title:'Sign up with Google',imagePath: 'assets/images/g.png',onPressed:()=>model.signInWithGoogle(),),
+                    SizedBox(height: 12,),
+                    TrifoldPictureButton(title:'Sign up with Facebook',imagePath: 'assets/images/f.png',onPressed:()=>model.signInWithGoogle(),),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 45),
                       child: Row(
@@ -229,25 +160,17 @@ class LogInScreen extends StatelessWidget {
                               fontSize: 14,
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () =>
-                                NavigationHelper.goTo(context, SignUpScreen()),
-                            child: Text(
-                              ' Sign Up',
-                              style: TextStyle(
-                                color: Color(0xffD3CA00),
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                          TrifoldLinkText(title:'Sign Up',onTapped:()=>Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpScreen())) ,),
+
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
           ),
         );
       },

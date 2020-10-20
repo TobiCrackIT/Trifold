@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:trifold/utils/colors/trifold_colors.dart';
 
-class TrifoldTextformFieldPassword extends StatefulWidget {
+class TrifoldPasswordField extends StatefulWidget {
+  
   final String title;
   final TextEditingController textEditingController;
   final ValueChanged<String> onChanged;
 
 
-  TrifoldTextformFieldPassword({this.title, this.textEditingController,this.onChanged});
+  TrifoldPasswordField({this.title, this.textEditingController,this.onChanged});
 
   @override
-  _TrifoldTextformFieldPasswordState createState() =>
-      _TrifoldTextformFieldPasswordState();
+  _TrifoldPasswordFieldState createState() =>
+      _TrifoldPasswordFieldState();
 }
 
-class _TrifoldTextformFieldPasswordState
-    extends State<TrifoldTextformFieldPassword> {
+class _TrifoldPasswordFieldState
+    extends State<TrifoldPasswordField> {
   bool hideText = true;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: 41,
-      margin: EdgeInsets.only(left: 30,right: 30,top: 24),
       child: TextFormField(
         maxLines: 1,
         obscureText: hideText,

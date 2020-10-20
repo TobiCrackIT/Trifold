@@ -19,7 +19,6 @@ class TrifoldPictureButton extends StatelessWidget {
             Border.all(color: Color(0xFFBABABA), width: 1),
             borderRadius: BorderRadius.all(Radius.circular(3))),
         padding: EdgeInsets.symmetric(vertical: 14),
-        margin: EdgeInsets.symmetric(horizontal: 30),
         child: Center(
           child: Row(
             children: <Widget>[

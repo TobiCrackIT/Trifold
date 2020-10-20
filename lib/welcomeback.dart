@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trifold/custom_widgets/trifold_textform_field_password.dart';
+import 'package:trifold/custom_widgets/trifold_password_field.dart';
 
 import 'custom_widgets/trifold_button.dart';
 
@@ -82,7 +82,7 @@ class Login extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 24, bottom: 40),
-                child: TrifoldTextformFieldPassword(title:'************'),
+                child: TrifoldPasswordField(title:'************'),
               ),
               TrifoldButton(title: 'Log In',onPressed: (){
                 Navigator.push(context,
